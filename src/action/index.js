@@ -1,4 +1,4 @@
-import { addnewuser } from '../api/index.js'
+import { addnewuser,  deleteById } from '../api/index.js'
 
 export const NEW_USER = 'NEW_USER'
 export const DELETE_USER = 'DELETE_USER'
@@ -13,10 +13,12 @@ export const newuser = (user)=>{
     }
 }
 
-export const deteteuser = (user)=>{
-    return {
-        type: DELETE_USER, 
-        user
+export const deteteuser = (id)=>{
+    return (dispatch) => {
+        deleteById(id).then((res) => {
+            console.log(res);
+            dispatch(handleInitData())
+        })
     }
 }
 
