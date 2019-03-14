@@ -1,14 +1,29 @@
+const bodyParser = require('body-parser')
 const express = require('express')
 const cors = require('cors')
-const app = express()
 const employees = require('./data/employees.json');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/employees');
+
+const app = express()
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 var corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200
 }
+
+// MongoDB - Mongoose
+mongoose.connect('mongodb://localhost:27017/employees');
+var personSchema = mongoose.Schema({
+  name: String,
+  age: Number,
+  nationality: String
+});
+var Person = mongoose.model("Person", personSchema);
+
 
 app.get('/api/employees', cors(corsOptions), (req, res, next) => {
   console.log('/api/employees');
@@ -20,7 +35,7 @@ app.get('/api/employees', cors(corsOptions), (req, res, next) => {
 app.post('/api/newuser', cors(corsOptions), (req, res, next)=>{
   const usr = req.body; 
   console.log(usr);
-
+  res.send()
 })
 
 app.listen(8080, () => console.log('Job Dispatch API running on port 8080!'))
