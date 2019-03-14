@@ -21,14 +21,13 @@ export function addnewuser(data = {}) {
           method: "POST", 
           mode: "no-cors", // no-cors, cors, *same-origin
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            // 'Accept': 'application/json',
+            // "Content-Type": "application/json"
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           redirect: "follow", // manual, *follow, error
           body: JSON.stringify(data),
       })
-      .then(response => {
-          console.log (response)
-      })
-    //   .then(response => response.json()); 
+
   }
 

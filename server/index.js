@@ -17,25 +17,45 @@ var corsOptions = {
 
 // MongoDB - Mongoose
 mongoose.connect('mongodb://localhost:27017/employees');
-var personSchema = mongoose.Schema({
-  name: String,
-  age: Number,
-  nationality: String
+const userSchema = mongoose.Schema({
+  name: String, 
+  code: String,
+  profession: String,
+  color: String,
+  city: String,
+  branch: String,
+  assigned: Boolean
 });
-var Person = mongoose.model("Person", personSchema);
+const User = mongoose.model("User", userSchema);
 
 
 app.get('/api/employees', cors(corsOptions), (req, res, next) => {
-  console.log('/api/employees');
-  res.setHeader('Content-Type', 'application/json');
-  res.status(200);
-  res.send(JSON.stringify(employees, null, 2));
+
+  User.find(function(err, response){
+    console.log(response)
+    res.json(response);
+  })
+  // res.setHeader('Content-Type', 'application/json');
+  // res.status(200);
+  // res.send(JSON.stringify(employees, null, 2));
 })
 
 app.post('/api/newuser', cors(corsOptions), (req, res, next)=>{
-  const usr = req.body; 
-  console.log(usr);
-  res.send()
+  const user_json = Object.keys(req.body)[0];
+  const usr = JSON.parse(user_json); 
+
+  const newUser = new User({
+    name: usr.name, 
+    code: usr.code,
+    profession: usr.profession,
+    color: usr.color,
+    city: usr.city,
+    branch: usr.branch,
+    assigned: usr.assigned
+  });
+  return newUser.save(function(err, result){
+    res.send("user added")
+  })
 })
 
 app.listen(8080, () => console.log('Job Dispatch API running on port 8080!'))

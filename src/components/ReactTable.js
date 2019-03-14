@@ -1,7 +1,7 @@
 const columns = [
     {
         Header: 'ID',
-        accessor: 'id'
+        accessor: '_id'
     },
     {
         Header: 'Name',

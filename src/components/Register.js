@@ -72,7 +72,7 @@ class Register extends Component {
                                 onChange={(e)=>{this.handleInput(e, 'assigned')}} value={this.state.assigned} />
                                 <label className="form-check-label" >Assigned</label>
                             </div>
-                            <button type="submit" className="btn btn-primary" onClick={this.createNewUser}>Submit</button>
+                            <button type="button" className="btn btn-primary" onClick={this.createNewUser}>Submit</button>
                         </form>
                     </div>
                 </div>

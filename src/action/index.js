@@ -13,8 +13,7 @@ export const LOAD_USER = 'LOAD_USER'
 
 export const newuser = (user)=>{
     return (dispatch) => {
-        console.log("here: ", user)
-        addnewuser(user).then(()=>{
+        addnewuser(user).then((res)=>{
             dispatch(handleInitData())
         })
     }
