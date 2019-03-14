@@ -12,7 +12,9 @@ app.use(bodyParser.json());
 
 var corsOptions = {
   origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  methods: "GET, POST, DELETE, UPDATE",
+  // allowedHeaders: "Origin, Content-Type, application/json"
 }
 
 // MongoDB - Mongoose
@@ -32,12 +34,8 @@ const User = mongoose.model("User", userSchema);
 app.get('/api/employees', cors(corsOptions), (req, res, next) => {
 
   User.find(function(err, response){
-    console.log(response)
     res.json(response);
   })
-  // res.setHeader('Content-Type', 'application/json');
-  // res.status(200);
-  // res.send(JSON.stringify(employees, null, 2));
 })
 
 app.post('/api/newuser', cors(corsOptions), (req, res, next)=>{

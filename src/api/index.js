@@ -19,7 +19,7 @@ export function addnewuser(data = {}) {
     // Default options are marked with *
       return fetch('http://localhost:8080/api/newuser', {
           method: "POST", 
-          mode: "no-cors", // no-cors, cors, *same-origin
+          mode: "cors", 
           headers: {
             // 'Accept': 'application/json',
             // "Content-Type": "application/json"
@@ -31,3 +31,18 @@ export function addnewuser(data = {}) {
 
   }
 
+//   export function deleteUser(userid = '') {
+//     // Default options are marked with *
+//       return fetch('http://localhost:8080/api/newuser', {
+//           method: "DELETE", 
+//           mode: "no-cors", // no-cors, cors, *same-origin
+//           headers: {
+//             // 'Accept': 'application/json',
+//             // "Content-Type": "application/json"
+//             "Content-Type": "application/x-www-form-urlencoded"
+//           },
+//           redirect: "follow", // manual, *follow, error
+//           body: JSON.stringify(data),
+//       })
+
+//   }
