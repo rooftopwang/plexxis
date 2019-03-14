@@ -1,11 +1,22 @@
+import { addnewuser } from '../api/index.js'
+
 export const NEW_USER = 'NEW_USER'
 export const DELETE_USER = 'DELETE_USER'
 export const LOAD_USER = 'LOAD_USER'
 
-export const newuser = (newuser)=>{
-    return {
-        type: NEW_USER, 
-        newuser
+// export const newuser = (newuser)=>{
+//     return {
+//         type: NEW_USER, 
+//         newuser
+//     }
+// }
+
+export const newuser = (user)=>{
+    return (dispatch) => {
+        console.log("here: ", user)
+        addnewuser(user).then(()=>{
+            dispatch(handleInitData())
+        })
     }
 }
 
