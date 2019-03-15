@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 var corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200,
-  methods: "GET, POST, DELETE, UPDATE",
-  // allowedHeaders: "Origin, Content-Type, application/json"
+  methods: "GET, PUT, POST, DELETE, OPTIONS",
+  allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
 }
 
 // MongoDB - Mongoose
@@ -30,6 +30,8 @@ const userSchema = mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
+
+app.options('/api/employees/:id', cors(corsOptions)) 
 
 app.get('/api/employees', cors(corsOptions), (req, res, next) => {
 
@@ -55,13 +57,12 @@ app.post('/api/newuser', cors(corsOptions), (req, res, next)=>{
     res.send("user added")
   })
 })
-
-app.delete('/api/delete/:id', cors(corsOptions), function(req, res, next){
-  console.log(res.body)
-  // Person.findByIdAndRemove(req.params.id, function(err, response){
-  //    if(err) res.json({message: "Error in deleting record id " + req.params.id});
-  //    else res.json({message: "Person with id " + req.params.id + " removed."});
-  // });
+app.options('/api/delete/:id', cors(corsOptions)) 
+app.del('/api/delete/:id', cors(corsOptions), function(req, res, next){
+  User.findByIdAndRemove(req.params.id, function(err, response){
+     if(err) res.json({message: "Error in deleting record id " + req.params.id});
+     else res.json({message: "User with id " + req.params.id + " removed."});
+  });
 });
 
 app.listen(8080, () => console.log('Job Dispatch API running on port 8080!'))

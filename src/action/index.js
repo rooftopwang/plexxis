@@ -13,7 +13,7 @@ export const newuser = (user)=>{
     }
 }
 
-export const deteteuser = (id)=>{
+export const deleteuser = (id)=>{
     return (dispatch) => {
         deleteById(id).then((res) => {
             console.log(res);

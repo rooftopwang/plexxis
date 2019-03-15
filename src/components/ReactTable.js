@@ -1,3 +1,6 @@
+import React from 'react'
+import Btn from './Btn.js'
+
 const columns = [
     {
         Header: 'ID',
@@ -32,5 +35,19 @@ const columns = [
         Header: 'Assigned',
         accessor: d => d.assigned.toString()
     },
+    // {
+    //     id: "del",
+    //     Header: 'Option',
+    //     Cell: ({row}) => (<button onClick={()=>{
+    //         deleteuser(row._id);
+    //     }}>Delete</button>)
+    // }
+    {
+        id: "del",
+        Header: 'Option',
+        Cell: ({row}) => (
+                <Btn usrid={row._id}/>
+            )
+    }
 ]
 export default columns
