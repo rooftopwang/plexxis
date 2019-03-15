@@ -1,5 +1,17 @@
 # Plexxis Interview Exercise
 
+## How To Play
+
+Start MongoDB
+```js
+mongod
+```
+
+Start app with the following command. Do not use nodemon, because yarn start is combined with concurrently, and it starts both front end and backend. 
+```js
+yarn start
+```
+
 ## Plugin Added
 
 ### Front End: React, Redux, React Router, React Table, Redux Thunk
