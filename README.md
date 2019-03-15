@@ -14,9 +14,9 @@ yarn start
 
 ## Plugin Added
 
-### Front End: React, Redux, React Router, React Table, Redux Thunk
+1) Front End: React, Redux, React Router, React Table, Redux Thunk
+2) Back End: MongoDB, Mongoose, Body-parser, 
 
-### Back End: MongoDB, Mongoose, Body-parser, 
 
 ## Things Have Been Done
 
