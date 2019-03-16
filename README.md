@@ -14,7 +14,7 @@ yarn start
 
 ## Plugin Added
 
-1) Front End: React, Redux, React Router, React Table, Redux Thunk
+1) Front End: React, Redux, React Table, Redux-Thunk, react-router-dom: React Router, Fragment
 2) Back End: MongoDB, Mongoose, Body-parser, 
 
 
@@ -33,9 +33,9 @@ yarn start
 1) Error handling
 2) Modularization
 3) Separate backend and frontend files
-4) Install nodemon
+4) Use Axios to make HTTP requests
 5) Use Loopback to connect MongoDB
-6) Validation
-7) Positive updating in front end: When user do DELETE, first delete local Redux data, send DELETE request to server. If server return error, rollback the local data.
+6) Form Validation
+7) Positive updating in front end: When user do DELETE, first delete local Redux data, send DELETE request to server. If server return error, rollback the local data. which speed up the app, and reduce the api calls to server. 
 8) Use the Atlas Cloud MongoDB. I am currently working on it. Hopefully done at the time of the interview. 
 9) Deploy app to Google App Engine. I am currently working on it. Hopefully done at the time of the interview. 
